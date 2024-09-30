@@ -8,11 +8,15 @@ class TweetAdmin(admin.ModelAdmin):
     list_display = (
         "user",
         "payload",
+        "likes_count",
     )
 
     list_filter = (
         "user",
     )
+
+    def likes_count(self, tweet):
+        return tweet.likes.count()
 
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
